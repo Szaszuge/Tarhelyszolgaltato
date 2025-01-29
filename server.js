@@ -5,7 +5,8 @@ var mysql = require('mysql')
 var db = mysql.createConnection({
     host            : 'localhost',
     user            : 'root',
-    password        : ''
+    password        : '',
+    multipleStatements: true
 });
 
 
@@ -51,8 +52,18 @@ app.post('/create-user', (req, res) => {
     });
 });
 
-app.post('/grant-priveleges', (req, res) => {
-    
+app.post('/grant-privileges', (req, res) => {
+    const {username, dbname, privileges} = req.body;
+    if (!username | !dbname | !privileges) {
+        return res.status(400).json({message: 'Missing data!'});
+    }
+    const sql = `USE ${dbname}; GRANT ${privileges} ON \`${dbname}\`.* TO '${username}'@'localhost'`
+    db.query(sql, (err, results) =>{
+        if (err) {
+            res.status(500).json({message: err});
+        }
+        res.status(200).json({message: `Granted ${privileges} to ${username} on ${dbname}!`, data: results})
+    });
 });
 
 app.listen(3000, ()=>{

@@ -15,3 +15,14 @@ Content-Type: application/json
 {
     "username" : "tesztelek"
 }
+
+### GRANT PRIVELEGES to USER on DATABASE
+
+POST http://localhost:3000/grant-privileges
+Content-Type: application/json
+
+{
+    "username"  : "tesztelek",
+    "dbname"    : "tesztelek",
+    "privileges": "ALL PRIVILEGES"
+}
