@@ -11,6 +11,16 @@ var db = mysql.createConnection({
 
 app.use(express.json());
 
+
+function generatePassword(){
+    const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.!#&$';
+    let password = '';
+    for(let i = 0; i < 12; i++){
+        password += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return password;
+}
+
 app.post('/create-database', (req, res) => {
     const { dbname } = req.body;
     if(!dbname){
@@ -27,10 +37,21 @@ app.post('/create-database', (req, res) => {
 });
 
 app.post('/create-user', (req, res) => {
-    
+    const { username } = req.body;
+    if(!username){
+        return res.status(400).json({message: 'Username name is required!'})
+    }
+    const password = generatePassword();
+    const sql = `CREATE USER '${username}'@'localhost' IDENTIFIED BY '${password}'`;
+    db.query(sql, (err, results) =>{
+        if (err) {
+            res.status(500).json({message: err});
+        }
+        res.status(200).json({message: 'User created succesfully!', data: results, password})
+    });
 });
 
-app.post('/create-priveleges', (req, res) => {
+app.post('/grant-priveleges', (req, res) => {
     
 });
 
