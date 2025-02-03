@@ -7,6 +7,8 @@ const router = express.Router();
 
 // importáljuk az egyes modulok útvonalait
 const userRoutes = require('./user.routes');
+const subscriptionRoutes = require('./subscription.routes')
+const productRoutes = require('./product.routes')
 /* további példák:
     const productRoutes = require('./product.routes');
     const orderRoutes = require('./order.routes');
@@ -15,6 +17,8 @@ const userRoutes = require('./user.routes');
 
 // regisztráljuk az útvonalakat
 router.use('/users', userRoutes);
+router.use('/subscriptions', subscriptionRoutes);
+router.use('/products', productRoutes)
 /* további példák:
     router.use('/products', productRoutes);
     router.use('/orders', orderRoutes);
