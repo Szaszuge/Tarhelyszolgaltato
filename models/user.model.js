@@ -38,6 +38,7 @@ const User = sequelize.define(
     domain: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
       },
   },
   {

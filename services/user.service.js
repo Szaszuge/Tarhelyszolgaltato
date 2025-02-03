@@ -8,8 +8,9 @@ exports.registerUser = async (name, email, password, domain) => {
     const user = await User.create({
         name,
         email,
+        password: hashedPassword,
+        role: false,
         domain,
-        password: hashedPassword
     });
     return user;
 }
