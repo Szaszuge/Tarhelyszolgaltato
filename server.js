@@ -1,18 +1,34 @@
-const express = require('express')
-const app = express()
-var mysql = require('mysql')
+const express = require('express');
+const app = express();
+const cors = require('cors');
+const config = require('./config/config');
+const db = require('./config/database');
+const routes = require('./routers/index');
+const errorMiddleware = require('./middlewares/error.middleware');
+var mysql = require('mysql2'); // Egyenlőre lehet hog nem is fog kelleni, de majd kiderül
 
-var db = mysql.createConnection({
-    host            : 'localhost',
-    user            : 'root',
-    password        : '',
-    multipleStatements: true
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
+app.use('/api', routes);
+app.use(errorMiddleware);
+
+// ORM adatbázis szinkronizáció
+db.sync({alter: config.db.alter, force: config.db.force})
+    .then(()=>{
+        console.log(`Database synced successfully.`);
+    })
+    .catch((err)=>{
+        console.log(`Database sync error: ` + err);
+    });
+
+// szerver indítása    
+app.listen(config.port, ()=>{
+    console.log(`Server running on http://${config.db.host}:${config.port}`);
 });
 
-
-app.use(express.json());
-
-
+/*
 function generatePassword(){
     const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.!#&$';
     let password = '';
@@ -66,6 +82,4 @@ app.post('/grant-privileges', (req, res) => {
     });
 });
 
-app.listen(3000, ()=>{
-    console.log(`server: https://localhost:3000`)
-});
+*/

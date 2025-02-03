@@ -3,13 +3,12 @@ const bcrypt = require('bcrypt');
 const { generateToken } = require('../utils/token');
 
 
-exports.registerUser = async (name, email, password, phone, address) => {
+exports.registerUser = async (name, email, password, domain) => {
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await User.create({
         name,
         email,
-        phone,
-        address,
+        domain,
         password: hashedPassword
     });
     return user;
