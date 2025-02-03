@@ -30,7 +30,10 @@ const User = sequelize.define(
     password: {
         type: DataTypes.STRING,
         allowNull: false,
-  
+      },
+    role: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
       },
     domain: {
         type: DataTypes.STRING,
