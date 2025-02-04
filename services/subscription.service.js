@@ -1,4 +1,4 @@
-const { Elofizetes } = require('../models/subscription.model')
+const { Elofizetes } = require('../models/subscription.model');
 
 
 exports.registerSubscription = async (userID, csomagID, date) => {
@@ -10,6 +10,6 @@ exports.registerSubscription = async (userID, csomagID, date) => {
     return subscription;
 }
 
-exports.getAllUsers = async () => {
+exports.getAllsubscriptions = async () => {
     return await Elofizetes.findAll()
 }

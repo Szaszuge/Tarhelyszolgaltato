@@ -18,7 +18,7 @@ exports.registerUser = async (name, email, password, domain) => {
 exports.loginUser = async (email, password) => {
     const user = await User.findOne({where: { email }});
     if (!user) throw new Error('Nem regisztrált felhasználó!');
-    if (! await bcrypt.compare(password, user.password)) throw new Error('Hibás jelszó!');
+    if (!await bcrypt.compare(password, user.password)) throw new Error('Hibás jelszó!');
 
     const token = generateToken({ id: user.id, name: user.name, email: user.email});
 
