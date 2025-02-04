@@ -16,16 +16,4 @@ router.post('/login', userController.login);
 // get all users
 router.get('/', authMiddleware,  userController.getAllUsers);
 
-// get user by id
-router.get('/:id', authMiddleware);
-
-// get logged user profile
-router.get('/profile', authMiddleware);
-
-// update user
-router.patch('/:id', authMiddleware);
-
-// delete user
-router.delete(':/id', authMiddleware);
-
 module.exports = router;
