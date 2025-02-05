@@ -7,8 +7,9 @@ const router = express.Router();
 
 // importáljuk az egyes modulok útvonalait
 const userRoutes = require('./user.routes');
-const subscriptionRoutes = require('./subscription.routes')
-const productRoutes = require('./product.routes')
+const subscriptionRoutes = require('./subscription.routes');
+const productRoutes = require('./product.routes');
+const mailerRoutes = require('./mailer.routes');
 /* további példák:
     const productRoutes = require('./product.routes');
     const orderRoutes = require('./order.routes');
@@ -19,6 +20,7 @@ const productRoutes = require('./product.routes')
 router.use('/users', userRoutes);
 router.use('/subscriptions', subscriptionRoutes);
 router.use('/products', productRoutes);
+router.use('/mailer', mailerRoutes);
 
 router.get('/', (req, res) => {
     res.send(`If you see this, the router is working`);
