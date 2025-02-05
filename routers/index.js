@@ -18,7 +18,8 @@ const productRoutes = require('./product.routes')
 // regisztráljuk az útvonalakat
 router.use('/users', userRoutes);
 router.use('/subscriptions', subscriptionRoutes);
-router.use('/products', productRoutes)
+router.use('/products', productRoutes);
+
 /* további példák:
     router.use('/products', productRoutes);
     router.use('/orders', orderRoutes);
