@@ -32,7 +32,7 @@ const Tarhelycsomag = sequelize.define(
       },
   },
   {
-    tableName: 'tarhelycsomag',
+    tableName: 'product',
     timestamps: false,
   },
 );

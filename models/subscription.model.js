@@ -33,7 +33,7 @@ const Elofizetes = sequelize.define(
       },
   },
   {
-    tableName: 'elofizetes',
+    tableName: 'subscription',
     timestamps: false,
   },
 );

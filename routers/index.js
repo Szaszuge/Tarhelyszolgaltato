@@ -20,6 +20,10 @@ router.use('/users', userRoutes);
 router.use('/subscriptions', subscriptionRoutes);
 router.use('/products', productRoutes);
 
+router.get('/', (req, res) => {
+    res.send(`If you see this, the router is working`);
+  });
+
 /* további példák:
     router.use('/products', productRoutes);
     router.use('/orders', orderRoutes);

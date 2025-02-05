@@ -1,11 +1,11 @@
-const { User } = require('../models/user.model');
+const userMod = require('../models/user.model');
 const bcrypt = require('bcrypt');
 const { generateToken } = require('../utils/token');
 
 
 exports.registerUser = async (name, email, password, domain) => {
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = await User.create({
+    const user = await userMod.create({
         name,
         email,
         password: hashedPassword,
@@ -16,7 +16,7 @@ exports.registerUser = async (name, email, password, domain) => {
 }
 
 exports.loginUser = async (email, password) => {
-    const user = await User.findOne({where: { email }});
+    const user = await userMod.findOne({where: { email }});
     if (!user) throw new Error('Nem regisztrált felhasználó!');
     if (!await bcrypt.compare(password, user.password)) throw new Error('Hibás jelszó!');
 
@@ -26,7 +26,7 @@ exports.loginUser = async (email, password) => {
 }
 
 exports.getAllUsers = async () => {
-    return await User.findAll({
+    return await userMod.findAll({
         attributes: {exclude: ['password']}
     });
 }
