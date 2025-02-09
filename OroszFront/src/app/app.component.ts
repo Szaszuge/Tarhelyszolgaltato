@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit, } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterOutlet, RouterModule } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { MenubarModule } from 'primeng/menubar';
 
@@ -7,7 +8,9 @@ import { MenubarModule } from 'primeng/menubar';
   selector: 'app-root',
   imports: [
     RouterOutlet,
-    MenubarModule
+    MenubarModule,
+    RouterModule,
+    CommonModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
@@ -24,15 +27,17 @@ export class AppComponent implements OnInit{
       },
         {
             label: 'Login',
-            icon: 'pi pi-sign-in'
+            icon: 'pi pi-sign-in',
+            route: 'login',
         },
         {
             label: 'Register',
-            icon: 'pi pi-user-plus'
+            icon: 'pi pi-user-plus',
+            route: 'registration',
         },
         {
             label: 'Admin',
-            icon: 'pi pi-user'
+            icon: 'pi pi-user',
         }
     ]
 }
