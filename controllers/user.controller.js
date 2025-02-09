@@ -2,11 +2,11 @@ const userService = require('../services/user.service');
 
 exports.register = async (req, res, next) => {
     try{
-        const { name, email, password, domain } = req.body;
+        const { name, email, password } = req.body;
         if ( !name || !email || !password){
             return res.status(400).json({ message: 'Hiányzó adatok!'});
         }
-        const user = await userService.registerUser(name, email, password, domain);
+        const user = await userService.registerUser(name, email, password);
         res.status(201).json(user);
     }catch(error){
         next(error);

@@ -1,11 +1,12 @@
 const { Elofizetes } = require('../models/subscription.model');
 
 
-exports.registerSubscription = async (userID, csomagID, date) => {
+exports.registerSubscription = async (userID, csomagID, date, domain) => {
     const subscription = await Elofizetes.create({
         userID,
         csomagID,
-        date
+        date,
+        domain,
     })
     return subscription;
 }
