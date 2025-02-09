@@ -26,7 +26,8 @@ export class RegistrationComponent {
     name: '',
     email: '',
     passwd: '',
-    confirm: ''
+    confirm: '',
+    role: false,
   }
 
   registration(){
@@ -39,7 +40,8 @@ export class RegistrationComponent {
           name: '',
           email: '',
           passwd: '',
-          confirm: ''
+          confirm: '',
+          role: false,
         }
       }else{
         this.message.showMessage('HIBA', res.message, 'danger');
