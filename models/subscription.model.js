@@ -31,6 +31,11 @@ const Elofizetes = sequelize.define(
         allowNull: false,
   
       },
+      domain: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+      },
   },
   {
     tableName: 'subscription',

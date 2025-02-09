@@ -35,11 +35,6 @@ const User = sequelize.define(
         type: DataTypes.BOOLEAN,
         allowNull: false,
       },
-    domain: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-      },
   },
   {
     tableName: 'users',
