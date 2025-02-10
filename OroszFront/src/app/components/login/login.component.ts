@@ -33,7 +33,7 @@ export class LoginComponent {
     id: '',
     name: '',
     email: '',
-    passwd: '',
+    password: '',
     confirm: '',
     role: false
   }
