@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MessageService } from '../../services/message.service';
-import { Message } from '../../interfaces/message';
+import { MessageService } from '../../service/message.service';
+import { Message } from '../../interface/message';
 import { CommonModule } from '@angular/common';
 
 @Component({

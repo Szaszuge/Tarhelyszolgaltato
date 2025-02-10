@@ -7,7 +7,7 @@ exports.register = async (req, res, next) => {
             return res.status(400).json({ message: 'Hiányzó adatok!'});
         }
         const user = await userService.registerUser(name, email, password);
-        res.status(201).json(user);
+        res.status(201).json({ message: "Sikeres regisztráció" });
     }catch(error){
         next(error);
     }
@@ -20,7 +20,7 @@ exports.login = async (req, res, next) => {
             return res.status(400).json({ message: 'Hiányzó adatok!'});
         }
         const user = await userService.loginUser(email, password);
-        res.status(200).json(user);
+        res.status(200).json({ message: "Sikeres bejelentkezés" });
     }catch(error){
         next(error);
     }
