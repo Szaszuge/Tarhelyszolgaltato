@@ -56,8 +56,8 @@ exports.login = async (req, res, next) => {
             }
             return res.status(203).json({ message: 'Hiányzó adatok!'});
         }
-        const user = await userService.loginUser(email, password);
-        res.status(200).json({ message: "Sikeres bejelentkezés" });
+        const token = await userService.loginUser(email, password);
+        res.status(200).json({ message: "Sikeres bejelentkezés(?)", token: Object.values(token)[0] });
     }catch(error){
         next(error);
     }

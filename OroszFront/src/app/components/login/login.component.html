@@ -2,8 +2,8 @@
   <h3 class="mt-4 mb-4">Belépés</h3>
 
   <p-floatlabel variant="on">
-    <input pInputText id="on_label" [(ngModel)]="user.name" autocomplete="off" />
-    <label for="on_label">Felhasználónév</label>
+    <input pInputText id="on_label" [(ngModel)]="user.email" autocomplete="off" />
+    <label for="on_label">Email</label>
   </p-floatlabel>
   <br>
   
@@ -14,3 +14,5 @@
 <br>
   <p-button (click)="login()" label="Belépés" />
 </div>
+
+<app-alert></app-alert>

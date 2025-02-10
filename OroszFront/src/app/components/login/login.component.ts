@@ -42,22 +42,20 @@ export class LoginComponent {
   }
 
   login(){
-    this.api.login(this.user).subscribe((res:any) => {
-      try{
-        if (res.status == 200){
-          this.auth.login(res.token);
-          this.message.showMessage('OK', res.message, 'success');
-          this.router.navigateByUrl('');
-        }else{
-          this.message.showMessage('HIBA', res.message, 'danger');
-        }
-      }
-      catch (err){
-        this.message.showMessage('HIBA', err, 'danger');
+    
+    this.api.login(this.user).subscribe(async (res:any) => {
+      
+      if (res.status == 200){
+        this.auth.login(res.token);
+        this.message.showMessage('OK', res.message, 'success');
+        this.router.navigateByUrl('');
+      }else{
+        this.message.showMessage('HIBA', res.message, 'danger');
       }
 
-      
     });
+    
+
   }
 
   isInvalid(field:string){
