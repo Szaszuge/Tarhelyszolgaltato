@@ -2,28 +2,28 @@
     <h3 >Felhasználó regisztráció</h3>
 
     <p-floatlabel variant="on">
-      <input pInputText id="on_label" [(ngModel)]="user.name"  autocomplete="off" [ngClass]="{'is-invalid': isInvalid('name')}"/>
+      <input pInputText id="on_label" [(ngModel)]="user.name"  autocomplete="off" />
       <label for="on_label">Felhasználónév</label>
   </p-floatlabel>
   <br>
     <p-floatlabel variant="on">
-      <input pInputText id="on_label" [(ngModel)]="user.email"  autocomplete="off" [ngClass]="{'is-invalid': isInvalid('email')}"/>
+      <input pInputText id="on_label" [(ngModel)]="user.email"  autocomplete="off" />
       <label for="on_label">E-mail</label>
   </p-floatlabel>
   <br>
   <p-floatlabel variant="on">
-    <input pInputText id="on_label" [(ngModel)]="user.password"  autocomplete="off" type="password" [ngClass]="{'is-invalid': isInvalid('password')}"/>
+    <input pInputText id="on_label" [(ngModel)]="user.password"  autocomplete="off" type="password"/>
     <label for="on_label">Jelszó</label>
   </p-floatlabel>
   <br>
   <p-floatlabel variant="on">
-    <input pInputText id="on_label" [(ngModel)]="user.confirm"  autocomplete="off" type="password" [ngClass]="{'is-invalid': isInvalid('confirm')}"/>
+    <input pInputText id="on_label" [(ngModel)]="user.confirm"  autocomplete="off" type="password"/>
     <label for="on_label">Jelszó megerősítése</label>
   </p-floatlabel>
   <br>
 
-<p-button (click)="registration()" label="Regisztráció" />
+            <p-button (click)="registration()" label="Regisztráció" styleClass="w-full" />
+        </div>
+    </div>
+</div>
 <app-alert></app-alert>
-
-  </div>
-  
