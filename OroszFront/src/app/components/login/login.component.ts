@@ -6,11 +6,15 @@ import { MessageService } from '../../service/message.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../service/auth.service';
+import { InputTextModule } from 'primeng/inputtext';
+import { FloatLabelModule } from 'primeng/floatlabel';
+import { ButtonModule } from 'primeng/button';
+
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterModule, CommonModule, FormsModule],
+  imports: [RouterModule, CommonModule, FormsModule, InputTextModule, FloatLabelModule, ButtonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
