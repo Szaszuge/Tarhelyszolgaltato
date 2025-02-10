@@ -12,8 +12,9 @@ exports.register = async (req, res, next) => {
             return res.status(400).json({message: 'A két jelszó nem egyezik'})
         }
         // TODO: Van-e már ez az E-mail regisztrálva
-        
-        console.log(`userService.IsEmailUsed(email):\n${userService.IsEmailUsed(email)}`)
+        if (userService.IsEmailUsed){
+            return res.status(400).json({message: 'Az E-mail már regisztrálva van!'})
+        }
 
         const user = await userService.registerUser(name, email, password);
         res.status(201).json({ message: "Sikeres regisztráció" });

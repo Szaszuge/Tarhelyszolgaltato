@@ -31,11 +31,11 @@ exports.getAllUsers = async () => {
 }
 
 exports.IsEmailUsed = async (email) => {
-    return await userMod.findAll({
+    await userMod.findAll({
         where: {
             email: email,
         }
-    }).then((res) => {
-        console.log(res)
+    }).then((value) => {
+        return value.length == 0;
     })
 }
