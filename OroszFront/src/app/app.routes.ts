@@ -9,7 +9,7 @@ export const routes: Routes = [
    *  logged out routes
    */
   {
-    path: 'home', component: HomeComponent
+    path: '', component: HomeComponent
   },
   {
     path: 'login', component: LoginComponent

@@ -9,14 +9,15 @@ import { AuthService } from '../../service/auth.service';
 import { InputTextModule } from 'primeng/inputtext';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { ButtonModule } from 'primeng/button';
+import { AlertComponent } from '../alert/alert.component';
 
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterModule, CommonModule, FormsModule, InputTextModule, FloatLabelModule, ButtonModule],
+  imports: [RouterModule, CommonModule, FormsModule, InputTextModule, FloatLabelModule, ButtonModule, AlertComponent],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrl: './login.component.css'
 })
 
 export class LoginComponent {
@@ -39,18 +40,22 @@ export class LoginComponent {
   }
 
   login(){
-    /*
-    this.api.login('users', this.user).subscribe((res:any) => {
-      this.invalidFields = res.invalid;
-      if (this.invalidFields.length == 0){
-        this.message.showMessage('OK', res.message, 'success');
-        this.auth.login(res.token);
-        this.router.navigateByUrl('/');
-      }else{
-        this.message.showMessage('HIBA', res.message, 'danger');
+    this.api.login(this.user).subscribe((res:any) => {
+      try{
+        if (res.status == 200){
+          this.auth.login(res.token);
+          this.message.showMessage('OK', res.message, 'success');
+          this.router.navigateByUrl('');
+        }else{
+          this.message.showMessage('HIBA', res.message, 'danger');
+        }
       }
+      catch (err){
+        this.message.showMessage('HIBA', err, 'danger');
+      }
+
+      
     });
-    */
   }
 
   isInvalid(field:string){

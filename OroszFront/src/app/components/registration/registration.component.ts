@@ -14,7 +14,7 @@ import { AlertComponent } from '../alert/alert.component';
   standalone: true,
   imports: [FormsModule, CommonModule, InputTextModule, FloatLabelModule, ButtonModule, AlertComponent],
   templateUrl: './registration.component.html',
-  styleUrl: './registration.component.scss'
+  styleUrl: './registration.component.css'
 })
 
 export class RegistrationComponent {
@@ -36,20 +36,32 @@ export class RegistrationComponent {
 
   registration(){
     this.api.userRegistration(this.user).subscribe((res:any) => {
-      if (this.invalidFields.length == 0){
-        this.message.showMessage('OK', res.message, 'success');
-        this.user = {
-          id: '',
-          name: '',
-          email: '',
-          password: '',
-          confirm: '',
-          role: false,
+      try{
+        if (res.status == 201){
+          this.message.showMessage('OK', res.message, 'success');
+          this.user = {
+            id: '',
+            name: '',
+            email: '',
+            password: '',
+            confirm: '',
+            role: false,  
+          }
         }
-      }else{
-        this.message.showMessage('HIBA', res.message, 'danger');
+        else{
+          this.message.showMessage('HIBA', res.message, 'danger');
+        }
       }
+      catch (err){
+        this.message.showMessage('HIBA', err, 'danger');
+      }
+      
+      
     });
   }
 
+  isInvalid(field:string){
+    return this.invalidFields.includes(field);
+  }
+  
 }

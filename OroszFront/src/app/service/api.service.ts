@@ -26,16 +26,9 @@ export class ApiService {
   userRegistration(user:User){
     return this.http.post(this.server + '/users/register', user);
   }
-    /*
-  registration(table:string, data:object){
-    return this.http.post(this.server + '/reg/' + table, data);
+  login(user:User){
+    return this.http.post(this.server + '/users/login', user);
   }
-  login(table:string, data:object){
-    return this.http.post(this.server + '/login/' + table, data);
-  }
-  // token-el védett metódusok:
-  select(table: string, field:string, op: string, value: string){
-    return this.http.get(this.server + '/'+table+'/'+field+'/'+op+'/'+value, this.tokenHeader());
-  }
-  */
+  // token-nel védett metódusok:
+  //  return this.http.get(this.tokenHeader());
 }

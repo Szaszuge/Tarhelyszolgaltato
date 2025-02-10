@@ -1,32 +1,60 @@
 const userService = require('../services/user.service');
 
-exports.register = async (req, res, next) => {
+exports.register = async (req, res, next) => {  
     try{
+
+        let invalidFields = [];
+
         const { name, email, password, confirm } = req.body;
         if ( !name || !email || !password || !confirm ){
-            return res.status(400).json({ message: 'Hiányzó adatok!'});
+
+            if (!name){
+                invalidFields.push('name');
+            }
+            if (!email){
+                invalidFields.push('email');
+            }
+            if (!password){
+                invalidFields.push('password');
+            }
+            if (!confirm){
+                invalidFields.push('confirm');
+            }
+
+            return res.status(203).json({ message: 'Hiányzó adatok!', invalid: invalidFields });
         }
         if (password != confirm){
-            return res.status(400).json({message: 'A két jelszó nem egyezik'})
+            invalidFields.push('password');
+            invalidFields.push('confirm');
+            return res.status(203).json({message: 'A két jelszó nem egyezik'})
         }
-        console.log(`Is eMail used? ${JSON.stringify(userService.IsEmailUsed(email))}`)
         if ((await userService.IsEmailUsed(email)).length > 0){
-            return res.status(400).json({message: 'Az E-mail már regisztrálva van!'})
+            invalidFields.push('email');
+            return res.status(203).json({message: 'Az E-mail már regisztrálva van!'})
         }
-
 
         const user = await userService.registerUser(name, email, password);
+
         res.status(201).json({ message: "Sikeres regisztráció" });
-    }catch(error){
+
+    }
+    catch(error){
         next(error);
     }
 }
 
 exports.login = async (req, res, next) => {
     try{
+        let invalidFields = [];
         const { email, password } = req.body;
         if (!email || !password){
-            return res.status(400).json({ message: 'Hiányzó adatok!'});
+            if (!email){
+                invalidFields.push('email');
+            }
+            if (!password){
+                invalidFields.push('password');
+            }
+            return res.status(203).json({ message: 'Hiányzó adatok!'});
         }
         const user = await userService.loginUser(email, password);
         res.status(200).json({ message: "Sikeres bejelentkezés" });

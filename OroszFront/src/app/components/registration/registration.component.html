@@ -2,22 +2,22 @@
     <h3 >Felhasználó regisztráció</h3>
 
     <p-floatlabel variant="on">
-      <input pInputText id="on_label" [(ngModel)]="user.name"  autocomplete="off" />
+      <input pInputText id="on_label" [(ngModel)]="user.name"  autocomplete="off" [ngClass]="{'is-invalid': isInvalid('name')}"/>
       <label for="on_label">Felhasználónév</label>
   </p-floatlabel>
   <br>
     <p-floatlabel variant="on">
-      <input pInputText id="on_label" [(ngModel)]="user.email"  autocomplete="off" />
+      <input pInputText id="on_label" [(ngModel)]="user.email"  autocomplete="off" [ngClass]="{'is-invalid': isInvalid('email')}"/>
       <label for="on_label">E-mail</label>
   </p-floatlabel>
   <br>
   <p-floatlabel variant="on">
-    <input pInputText id="on_label" [(ngModel)]="user.password"  autocomplete="off" type="password"/>
+    <input pInputText id="on_label" [(ngModel)]="user.password"  autocomplete="off" type="password" [ngClass]="{'is-invalid': isInvalid('password')}"/>
     <label for="on_label">Jelszó</label>
   </p-floatlabel>
   <br>
   <p-floatlabel variant="on">
-    <input pInputText id="on_label" [(ngModel)]="user.confirm"  autocomplete="off" type="password"/>
+    <input pInputText id="on_label" [(ngModel)]="user.confirm"  autocomplete="off" type="password" [ngClass]="{'is-invalid': isInvalid('confirm')}"/>
     <label for="on_label">Jelszó megerősítése</label>
   </p-floatlabel>
   <br>
