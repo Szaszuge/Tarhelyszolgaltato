@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ApiService } from '../../service/api.service';
 import { Router, RouterModule } from '@angular/router';
 import { User } from '../../interface/user';
 import { MessageService } from '../../service/message.service';
@@ -17,7 +16,6 @@ import { AuthService } from '../../service/auth.service';
 
 export class LoginComponent {
   constructor(
-    private api: ApiService,
     private auth: AuthService,
     private message: MessageService,
     private router: Router
@@ -35,6 +33,7 @@ export class LoginComponent {
   }
 
   login(){
+    /*
     this.api.login('users', this.user).subscribe((res:any) => {
       this.invalidFields = res.invalid;
       if (this.invalidFields.length == 0){
@@ -45,6 +44,7 @@ export class LoginComponent {
         this.message.showMessage('HIBA', res.message, 'danger');
       }
     });
+    */
   }
 
   isInvalid(field:string){

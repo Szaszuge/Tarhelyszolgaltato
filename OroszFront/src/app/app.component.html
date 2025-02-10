@@ -1,14 +1,16 @@
-<router-outlet>
+
   <div class="card">
+
     <p-menubar [model]="items">
-      <ng-template  #item let-item>
+      <ng-template #item let-item>
         <ng-container *ngIf="item.route">
-            <a routerLink="{{item.route}}" class="p-menubar-item-link">
+            <a [routerLink]="item.route" class="p-menubar-item-link">
                 <span [class]="item.icon"></span>
                 <span class="ml-2">{{ item.label }}</span>
             </a>
         </ng-container>
-    </ng-template>
+      </ng-template>
     </p-menubar>
+
 </div>
-</router-outlet>
+<router-outlet/>
