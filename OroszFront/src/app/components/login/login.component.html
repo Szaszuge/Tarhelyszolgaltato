@@ -1,17 +1,17 @@
 <div class="col-md-8 col-lg-6 col-xl-4 offset-md-2 offset-lg-3 offset-xl-4">
-    <h3 class="mt-4 mb-4">Belépés</h3>
-  
-    <p-floatlabel variant="on">
-      <input pInputText id="on_label" [(ngModel)]="user.name" autocomplete="off" />
-      <label for="on_label">Felhasználónév</label>
+  <h3 class="mt-4 mb-4">Belépés</h3>
+
+  <p-floatlabel variant="on">
+    <input pInputText id="on_label" [(ngModel)]="user.name" autocomplete="off" />
+    <label for="on_label">Felhasználónév</label>
   </p-floatlabel>
   <br>
-  <p-floatlabel variant="on">
-    <input pInputText id="on_label" [(ngModel)]="user.passwd" autocomplete="off" />
-    <label for="on_label">Jelszó</label>
-</p-floatlabel>
-<br>
-  <p-button (click)="login()" label="Belépés" />
-
-  </div>
   
+  <p-floatlabel variant="on">
+    <input pInputText type="password" id="on_label_passwd" [(ngModel)]="user.passwd" autocomplete="off" />
+    <label for="on_label_passwd">Jelszó</label>
+  </p-floatlabel>
+  <br>
+  
+  <p-button (click)="login()" label="Belépés" />
+</div>
