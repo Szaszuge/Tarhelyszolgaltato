@@ -2,11 +2,19 @@ const userService = require('../services/user.service');
 
 exports.register = async (req, res, next) => {
     try{
-        const { name, email, password } = req.body;
-        if ( !name || !email || !password){
+        const { name, email, password, confirm } = req.body;
+        if ( !name || !email || !password || !confirm ){
             return res.status(400).json({ message: 'Hiányzó adatok!'});
         }
+
         // TODO: Adatok ellenőrzése
+        if (password != confirm){
+            return res.status(400).json({message: 'A két jelszó nem egyezik'})
+        }
+        // TODO: Van-e már ez az E-mail regisztrálva
+        
+        console.log(`userService.IsEmailUsed(email):\n${userService.IsEmailUsed(email)}`)
+
         const user = await userService.registerUser(name, email, password);
         res.status(201).json({ message: "Sikeres regisztráció" });
     }catch(error){

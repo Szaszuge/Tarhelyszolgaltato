@@ -29,3 +29,13 @@ exports.getAllUsers = async () => {
         attributes: {exclude: ['password']}
     });
 }
+
+exports.IsEmailUsed = async (email) => {
+    return await userMod.findAll({
+        where: {
+            email: email,
+        }
+    }).then((res) => {
+        console.log(res)
+    })
+}
