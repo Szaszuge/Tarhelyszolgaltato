@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ApiService } from '../../service/api.service';
 import { Router, RouterModule } from '@angular/router';
 import { User } from '../../interface/user';
 import { MessageService } from '../../service/message.service';
@@ -16,6 +17,7 @@ import { AuthService } from '../../service/auth.service';
 
 export class LoginComponent {
   constructor(
+    private api: ApiService,
     private auth: AuthService,
     private message: MessageService,
     private router: Router
