@@ -1,29 +1,32 @@
-<div class="yes">
-    <h3 >Felhasználó regisztráció</h3>
+<div class="login-container">
+    <div class="login-card">
+        <h3 class="login-title">Regisztráció</h3>
+        
+        <div class="login-form">
+            <p-floatlabel variant="on">
+                <input pInputText id="username" [(ngModel)]="user.name" autocomplete="off" />
+                <label for="username">Felhasználónév</label>
+            </p-floatlabel>
 
-    <p-floatlabel variant="on">
-      <input pInputText id="on_label" [(ngModel)]="user.name"  autocomplete="off" />
-      <label for="on_label">Felhasználónév</label>
-  </p-floatlabel>
-  <br>
-    <p-floatlabel variant="on">
-      <input pInputText id="on_label" [(ngModel)]="user.email"  autocomplete="off" />
-      <label for="on_label">E-mail</label>
-  </p-floatlabel>
-  <br>
-  <p-floatlabel variant="on">
-    <input pInputText id="on_label" [(ngModel)]="user.password"  autocomplete="off" type="password"/>
-    <label for="on_label">Jelszó</label>
-  </p-floatlabel>
-  <br>
-  <p-floatlabel variant="on">
-    <input pInputText id="on_label" [(ngModel)]="user.confirm"  autocomplete="off" type="password"/>
-    <label for="on_label">Jelszó megerősítése</label>
-  </p-floatlabel>
-  <br>
+            <p-floatlabel variant="on">
+                <input pInputText id="email" [(ngModel)]="user.email" autocomplete="off" />
+                <label for="email">E-mail</label>
+            </p-floatlabel>
 
-<p-button (click)="registration()" label="Regisztráció" />
+            <p-floatlabel variant="on">
+                <input pInputText id="password" [(ngModel)]="user.password" 
+                       autocomplete="off" type="password"/>
+                <label for="password">Jelszó</label>
+            </p-floatlabel>
+
+            <p-floatlabel variant="on">
+                <input pInputText id="confirm" [(ngModel)]="user.confirm" 
+                       autocomplete="off" type="password"/>
+                <label for="confirm">Jelszó megerősítése</label>
+            </p-floatlabel>
+
+            <p-button (click)="registration()" label="Regisztráció" styleClass="w-full" />
+        </div>
+    </div>
+</div>
 <app-alert></app-alert>
-
-  </div>
-  
