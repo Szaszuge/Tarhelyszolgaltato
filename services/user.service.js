@@ -31,11 +31,9 @@ exports.getAllUsers = async () => {
 }
 
 exports.IsEmailUsed = async (email) => {
-    await userMod.findAll({
+    return await userMod.findAll({
         where: {
             email: email,
         }
-    }).then((value) => {
-        return value.length == 0;
     })
 }

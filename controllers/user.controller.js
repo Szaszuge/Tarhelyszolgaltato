@@ -6,15 +6,14 @@ exports.register = async (req, res, next) => {
         if ( !name || !email || !password || !confirm ){
             return res.status(400).json({ message: 'Hiányzó adatok!'});
         }
-
-        // TODO: Adatok ellenőrzése
         if (password != confirm){
             return res.status(400).json({message: 'A két jelszó nem egyezik'})
         }
-        // TODO: Van-e már ez az E-mail regisztrálva
-        if (userService.IsEmailUsed){
+        console.log(`Is eMail used? ${JSON.stringify(userService.IsEmailUsed(email))}`)
+        if ((await userService.IsEmailUsed(email)).length > 0){
             return res.status(400).json({message: 'Az E-mail már regisztrálva van!'})
         }
+
 
         const user = await userService.registerUser(name, email, password);
         res.status(201).json({ message: "Sikeres regisztráció" });
