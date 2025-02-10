@@ -2,11 +2,13 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MessageService } from '../../service/message.service';
 import { Message } from '../../interface/message';
 import { CommonModule } from '@angular/common';
+import { DialogModule } from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-alert',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, DialogModule, ButtonModule],
   templateUrl: './alert.component.html',
   styleUrl: './alert.component.scss'
 })

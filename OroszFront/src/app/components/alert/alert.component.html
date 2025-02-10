@@ -1,5 +1,6 @@
 <div *ngIf="message" class="alert alert-{{message.severity}} alert-dismissible fade show" role="alert">
-  <strong>{{message.title}}</strong> <br>
-  {{message.message}}
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="closeAlert()"></button>
+  <span class="p-text-secondary block mb-8">{{message.message}}</span>
+  <div class="flex justify-end gap-2">
+      <p-button label="OK" (click)="closeAlert()" />
+  </div>
 </div>

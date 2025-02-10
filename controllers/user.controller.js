@@ -6,6 +6,7 @@ exports.register = async (req, res, next) => {
         if ( !name || !email || !password){
             return res.status(400).json({ message: 'Hiányzó adatok!'});
         }
+        // TODO: Adatok ellenőrzése
         const user = await userService.registerUser(name, email, password);
         res.status(201).json({ message: "Sikeres regisztráció" });
     }catch(error){
